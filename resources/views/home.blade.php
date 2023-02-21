@@ -9,9 +9,9 @@
          <div class="row pt-5 ms-2">
              @foreach($comics as $comic)  
              <div class="col-2">
-                <a class="text-decoration-none text-white" href="{{ route('comics-details', ['series' => $comic['series']])}}">
+                <a class="text-decoration-none text-white" href="{{ route('comics-details', ['id' => $comic['id']])}}">
                     <div class="card-comics">
-                        <img class="card-img-top" src="{{ $comic['thumb'] }}" alt="{{ $comic['series'] }}">
+                        <img class="card-img-top" src="{{ $comic['thumb'] }}" alt="{{ $comic['id'] }}">
                     </div>
                     <div class="card-body-comics text-white text-uppercase">
                         <p style="font-size: 12px" class="pt-2 ">{{ $comic['series'] }}</p>

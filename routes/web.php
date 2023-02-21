@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagecController as PagecController;
-use App\Http\Controllers\ComicController as ComicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,18 +22,18 @@ Route::get('/', [PagecController::class, 'index'])->name('homepage');
 //     return view('home', compact('comics'));
 // })->name('homepage');
 
-// Route::get('/', [PagecController::class, 'index']->name('homepage'));
+Route::get('/comics/{id}', [PagecController::class, 'show'])->name('comics-details');
 
-Route::get('/comics/{series}', function ($series){
+// Route::get('/comics/{series}', function ($series){
 
-    $comics = config('db.series');
+//     $comics = config('db.series');
 
-    foreach($comics as $comic){
-        if($comic['series'] == $series){
-            $single = $comic;
-        }
-    };
+//     foreach($comics as $comic){
+//         if($comic['series'] == $series){
+//             $single = $comic;
+//         }
+//     };
 
-    return view('comics_details', compact('single'));
+//     return view('comics_details', compact('single'));
 
-})->name('comics-details');
+// })->name('comics-details');

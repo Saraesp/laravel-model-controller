@@ -12,4 +12,15 @@ class PagecController extends Controller
 
         return view('home', compact('comics'));
     }
+
+    public function show($id){
+
+        $comic = Comic::find($id);
+        $single = [
+            'single' => $comic
+        ];
+
+        return view('comics_details', $single);
+    }
+
 }
