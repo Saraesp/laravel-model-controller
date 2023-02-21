@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController as PageController;
+use App\Http\Controllers\PagecController as PagecController;
+use App\Http\Controllers\ComicController as ComicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,15 @@ use App\Http\Controllers\PageController as PageController;
 |
 */
 
-Route::get('/',[PageController::class, 'index'])->name('page');
+Route::get('/', [PagecController::class, 'index'])->name('homepage');
 
-Route::get('/', function () {
-    $comics = config('db.series');
+// Route::get('/', function () {
+//     $comics = config('db.series');
 
-    return view('home', compact('comics'));
-})->name('homepage');
+//     return view('home', compact('comics'));
+// })->name('homepage');
+
+// Route::get('/', [PagecController::class, 'index']->name('homepage'));
 
 Route::get('/comics/{series}', function ($series){
 
