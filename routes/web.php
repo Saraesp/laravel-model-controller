@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController as PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/',[PageController::class, 'index'])->name('page');
+
 Route::get('/', function () {
     $comics = config('db.series');
 
     return view('home', compact('comics'));
-});
+})->name('homepage');
+
+Route::get('/comics/{series}', function ($series){
+
+    $comics = config('db.series');
+
+    foreach($comics as $comic){
+        if($comic['series'] == $series){
+            $single = $comic;
+        }
+    };
+
+    return view('comics_details', compact('single'));
+
+})->name('comics-details');
